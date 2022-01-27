@@ -84,6 +84,11 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
             Route::match(['get', 'post'], '/update/{id}', [AdminMasterController::class, 'updateExpenseCategory']);
             Route::get('/delete/{id}', [AdminMasterController::class, 'destroyExpenseCategory']);
         });
+        Route::group(['prefix' => 'expense-sub-category'], function () {
+            Route::match(['get', 'post'],'/', [AdminMasterController::class, 'expenseSubCategoryIndex']);
+            Route::match(['get', 'post'], '/update/{id}', [AdminMasterController::class, 'updateExpenseSubCategory']);
+            Route::get('/delete/{id}', [AdminMasterController::class, 'destroyExpenseSubCategory']);
+        });
 
         Route::group(['prefix' => 'tax'], function () {
             Route::match(['get', 'post'],'/', [AdminMasterController::class, 'taxIndex']);

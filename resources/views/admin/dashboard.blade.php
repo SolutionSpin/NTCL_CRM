@@ -135,7 +135,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>{{$row->customer->display_name}}</td>
+                                            <td></td>
                                             <td> {{$row->total - $row->tax_amount}}</td>
                                             <td>{{$row->paid}}</td>
                                             <td>
@@ -195,7 +195,7 @@
                                         <td>{{dateFormat($row->paid_date)}}</td>
                                         <td>{{$row->payment_number }}</td>
                                         <td>{{$row->invoice_number }}</td>
-                                        <td>{{$row->customer->display_name}}</td>
+                                        <td></td>
                                         <td>{{$row->paid}}</td>
                                     </tr>
                                 @endforeach

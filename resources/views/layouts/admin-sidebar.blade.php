@@ -33,120 +33,15 @@
                     <a href="{{url('admin/customers')}}" class="nav-link  {{ Request::is('admin/customers*') ? 'active-admin' : null }}">
                         <i class="nav-icon fas fa-users"></i>
                         <p>
-                            {{__('all.customers')}}
+                            Projects
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/items')}}" class="nav-link  {{ Request::is('admin/items*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-tags"></i>
-                        <p>
-                            {{__('all.items')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/estimates')}}" class="nav-link  {{ Request::is('admin/estimates*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-print"></i>
-                        <p>
-                            {{__('all.estimates')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/invoices')}}" class="nav-link  {{ Request::is('admin/invoices*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-receipt"></i>
-                        <p>
-                            {{__('all.invoices')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/orders')}}" class="nav-link  {{ Request::is('admin/orders*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-shopping-cart"></i>
-                        <p>
-                            {{__('all.orders')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/payments')}}" class="nav-link  {{ Request::is('admin/payments*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-money-check-alt"></i>
-                        <p>
-                            {{__('all.payments')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/online-transactions')}}" class="nav-link  {{ Request::is('admin/online-transactions') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-money-check"></i>
-                        <p>
-                            {{__('all.online_transaction')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item {{ Request::is('admin/bank/accounts*') || Request::is('admin/bank/transfer*')  ? 'menu-open ' : null }}">
-                    <a class="nav-link {{ Request::is('admin/bank/accounts*') || Request::is('admin/bank/transfer*')  ? 'active-admin-1 admin-text-white' : null }}">
-                        <i class="nav-icon fas fa-university"></i>
-                        <p>
-                            {{__('all.bank')}}
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge admin-white right">2</span>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{url('admin/bank/accounts')}}" class="nav-link  {{ Request::is('admin/bank/accounts*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.accounts')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/bank/transfer')}}" class="nav-link  {{ Request::is('admin/bank/transfer*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.transfer')}}</p>
-                            </a>
-                        </li>
-
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="{{url('admin/expenses')}}" class="nav-link  {{ Request::is('admin/expenses*') ? 'active-admin' : null }}">
                         <i class="nav-icon fas fa-wallet"></i>
                         <p>
                             {{__('all.expense')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/notes')}}" class="nav-link  {{ Request::is('admin/notes*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-wallet"></i>
-                        <p>
-                            {{__('all.notes')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/todos')}}" class="nav-link  {{ Request::is('admin/todos*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-check-double"></i>
-                        <p>
-                            {{__('all.todos')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/projects')}}" class="nav-link  {{ Request::is('admin/projects*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-project-diagram"></i>
-                        <p>
-                            {{__('all.projects')}}
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/tasks')}}" class="nav-link  {{ Request::is('admin/tasks*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-tasks"></i>
-                        <p>
-                            {{__('all.tasks')}}
                         </p>
                     </a>
                 </li>
@@ -161,45 +56,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{url('admin/masters/tax')}}" class="nav-link  {{ Request::is('admin/masters/tax*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.tax_types')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/masters/payment-mode')}}" class="nav-link  {{ Request::is('admin/masters/payment-mode*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.payment_modes')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
                             <a href="{{url('admin/masters/expense-category')}}" class="nav-link  {{ Request::is('admin/masters/expense-category*') ? 'active-admin' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>{{__('all.expense_category')}}</p>
                             </a>
                         </li>
-                    </ul>
-                </li>
-                <li class="nav-item {{ Request::is('admin/reports/invoice*') || Request::is('admin/reports/customers*')  ? 'menu-open' : null }}">
-                    <a href="#" class="nav-link {{ Request::is('admin/reports/invoice*') || Request::is('admin/reports/customers*')  ? 'active-admin-1 admin-text-white' : null }}">
-                        <i class="nav-icon fas fa-chart-area"></i>
-                        <p>
-                            {{__('all.reports')}}
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge admin-white right">2</span>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="{{url('admin/reports/invoice')}}" class="nav-link  {{ Request::is('admin/reports/invoice*') ? 'active-admin' : null }}">
+                            <a href="{{url('admin/masters/expense-sub-category')}}" class="nav-link  {{ Request::is('admin/masters/expense-sub-category*') ? 'active-admin' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.invoice_report')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/reports/customers')}}" class="nav-link  {{ Request::is('admin/reports/customers*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.customer_report')}}</p>
+                                <p>Expense Subcategory</p>
                             </a>
                         </li>
                     </ul>
@@ -244,43 +109,6 @@
                                 <p>{{__('all.payment_settings')}}</p>
                             </a>
                         </li>
-                    </ul>
-                </li>
-                <li class="nav-item {{ Request::is('agent/call-center*') || Request::is('agent/call-center/all-call*')  ? 'menu-open ' : null }}">
-                    <a href="#" class="nav-link {{ Request::is('agent/call-center/all-call*') || Request::is('agent/call-center/all-call*')  ? 'active-admin-1 admin-text-white' : null }}">
-                        <i class="nav-icon fas fa-phone-alt"></i>
-                        <p>
-                            LDS-Acquisition
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge admin-white right">4</span>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{url('agent/call-center/all-call')}}" class="nav-link  {{ Request::is('agent/call-center/all-call*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('List of Garment')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('agent/call-center/pending-call')}}" class="nav-link  {{ Request::is('agent/call-center/pending-call*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('Pending Call')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('agent/call-center/qc-visit')}}" class="nav-link  {{ Request::is('agent/call-center/qc-visit*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('QC Visit')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('agent/call-center/call-report')}}" class="nav-link  {{ Request::is('agent/call-center/call-report*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('Report')}}</p>
-                            </a>
-                        </li>
-
                     </ul>
                 </li>
                 <li class="nav-item">

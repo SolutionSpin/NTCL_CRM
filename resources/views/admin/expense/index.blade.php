@@ -21,7 +21,7 @@
                                                 <thead>
                                                 <tr>
                                                     <th>{{ __('all.date') }}</th>
-                                                    <th>{{ __('all.customer') }}</th>
+                                                    <th>Project</th>
                                                     <th>{{ __('all.expense_category') }}</th>
                                                     <th>Expense Subcategory</th>
                                                     <th>{{ __('all.amount') }}</th>

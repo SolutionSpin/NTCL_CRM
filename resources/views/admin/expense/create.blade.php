@@ -64,9 +64,20 @@
                                     </div>
                                     <div class="col-sm-3 col-md-3">
                                         <div class="form-group">
-                                            <label class="form-label">Expense Subcategory:</label>
-                                            <input type="text" class="form-control" placeholder="expense_subcategory" name="expense_subcategory"
-                                                   id="expense_subcategory" value="{{ isset($expense) ? $expense->expense_subcategory : '' }}">
+                                            <label class="form-label">Expense Subcategory<span
+                                                    class="text-red">*</span></label>
+                                            @php
+                                                $expenseSubCategories = App\ExpenseSubCategory::get();
+                                            @endphp
+                                            <select class="form-control select2" name="expense_subcategory"
+                                                    id="expense_category_id">
+                                                <option value="">--Expense Subcategory--</option>
+                                                @foreach ($expenseSubCategories as $row)
+                                                    <option value="{{ $row->id }}"
+                                                        {{ isset($expense) && $expense->expense_category_id == $row->id ? 'selected' : '' }}>
+                                                        {{ $row->name }} </option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-sm-3 col-md-3">

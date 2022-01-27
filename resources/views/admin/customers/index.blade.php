@@ -7,7 +7,7 @@
                 <div class="card-header admin-cart-header">
                     <h3 class="card-title">{{ __('all.customers') }}</h3>
                     <a href="{{ url('admin/customers/create') }}" class="btn btn-xs admin-submit-btn-grad float-right"><i
-                            class="fa fa-plus"></i>{{ __('all.add_new_customer') }}</a>
+                            class="fa fa-plus"></i>Add New Project</a>
                 </div>
                 <div class="card-body pb-0 shadow-3">
                     <table class="data-table">

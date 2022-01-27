@@ -13,6 +13,7 @@ use App\Expense;
 use Auth;
 use Image;
 use Validator;
+use App\ExpenseSubCategory;
 class AdminMasterController extends Controller
 {
     /* Account Master */
@@ -170,6 +171,68 @@ class AdminMasterController extends Controller
     public function updateExpenseCategory(Request $request, $id)
     {
         $expense_category = ExpenseCategory::find($id);
+        if ($request->isMethod('get')) {
+            /* url has get method */
+            return response()->json([
+                'data' => $expense_category
+            ]);
+        } else {
+            /* url has post method */
+            $rules = [
+                'expense_category_name' => Rule::unique('expense_categories', 'name')->ignore($id)
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                /* if the validation fails */
+                return response()->json("error");
+            }
+            $expense_category->name = $request->expense_category_edit_name;
+            $expense_category->description = $request->expense_category_edit_description;
+            $expense_category->save();
+            return response()->json("success");
+        }
+    }
+
+    /* expense Category Insertion */
+    public function expenseSubCategoryIndex(Request $request)
+    {
+        $expense_categories = ExpenseSubCategory::latest()->paginate(15);
+        if ($request->isMethod('get')) {
+            /* url has get method */
+            return view('admin.master.index-expense-sub-category', compact('expense_categories'));
+        } else {
+            $rules = [
+                'expense_category_name' => Rule::unique('expense_sub_categories', 'name')
+            ];
+            $validator = Validator::make($request->all(), $rules);
+            if ($validator->fails()) {
+                /* if the validation fails */
+                return response()->json("error");
+            }
+            $expense_category = new ExpenseSubCategory();
+            $expense_category->name = $request->expense_category_name;
+            $expense_category->description = $request->description;
+            $expense_category->is_active = 1;
+            $expense_category->save();
+            return response()->json("success");
+        }
+    }
+    /* destroy expense category information*/
+    public function destroyExpenseSubCategory($id)
+    {
+        $expenseCategory = ExpenseSubCategory::find($id);
+        $expense = Expense::where('expense_category_id',$id)->first();
+        /* if expence categoroy is restricted */
+        if(!empty($expense)) {
+            return redirect()->back()->with('error', 'Expense Category Deletion Restricted.');
+        }
+        $expenseCategory->delete();
+        return redirect()->back()->with('message', 'Expense Category Destroyed Successfully');
+    }
+    /* update Expense Category details */
+    public function updateExpenseSubCategory(Request $request, $id)
+    {
+        $expense_category = ExpenseSubCategory::find($id);
         if ($request->isMethod('get')) {
             /* url has get method */
             return response()->json([
