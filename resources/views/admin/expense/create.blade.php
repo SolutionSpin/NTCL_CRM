@@ -25,7 +25,7 @@
                                     </div>
                                     <div class="col-sm-3 col-md-3">
                                         <div class="form-group">
-                                            <label class="form-label">{{ __('all.customer') }}<span
+                                            <label class="form-label">Project<span
                                                     class="text-red">*</span></label>
                                             @php
                                                 $customers = App\Customer::latest()->get();
