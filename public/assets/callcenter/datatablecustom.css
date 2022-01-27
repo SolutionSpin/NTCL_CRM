@@ -1,0 +1,41 @@
+.dt-buttons {
+    margin-left: 10px;
+}
+.dt-buttons .buttons-excel,.dt-buttons .buttons-csv,.dt-buttons .buttons-pdf,.dt-buttons .buttons-print,.dt-buttons .buttons-copy{
+    display: none;
+}
+.dataTables_length {
+    float: left;
+}
+.dataTables_filter {
+    float: right;
+}
+.datatable .btn-group a {
+    margin-right: 3px;
+}
+.overlay{
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background: rgba(135, 135, 135, 0.36) url("../media/loader.gif") center no-repeat;
+    background-size: 7%;
+}
+body.loading{
+    overflow: hidden;
+}
+/* Make spinner image visible when body element has the loading class */
+body.loading .overlay{
+    display: block;
+}
+
+.dataTables_scrollHeadInner {
+    width: 100% !important;
+}
+
+.table {
+    width: 100% !important;
+}

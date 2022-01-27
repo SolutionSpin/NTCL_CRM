@@ -1,17 +1,26 @@
-/vendor/
-node_modules/
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+/public/uploads/
+/.idea
+.idea
+.env
+.env.backup
+pull.bat
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
 npm-debug.log
 yarn-error.log
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-storage/*.key
-.env
-Homestead.yaml
-Homestead.json
-/.vagrant
+# Editor directories and files
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+tender_capacity.zip
