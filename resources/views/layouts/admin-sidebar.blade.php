@@ -7,14 +7,10 @@
 </nav>
 <aside class="main-sidebar admin-sidebar-dark-primary elevation-4">
     <div class="brand-link">
-        <img src="{{(isset($site['favicon']) && !empty($site['favicon']) && File::exists('uploads/favicon/'.$site['favicon'])) ? asset('uploads/favicon/'.$site['favicon']):asset('uploads/favicon/favicon.png')}}" alt="Logo" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">{{(isset($site['site_title']) && !empty($site['site_title']) ) ? $site['site_title'] : "Invoxi"}}</span>
         </div>
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="{{(isset(Auth::user()->avatar) && !empty(Auth::user()->avatar) && File::exists('uploads/profile/'.Auth::user()->avatar)) ? asset('uploads/profile/'.Auth::user()->avatar):asset('uploads/profile/default.png')}}" class="img-circle elevation-2" alt="User Image">
-            </div>
             <div class="info">
                 <a href="#" class="d-block">{{Auth::user()->name}}</a>
             </div>
