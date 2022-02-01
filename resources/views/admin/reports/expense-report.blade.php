@@ -8,16 +8,22 @@
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
                 <div class="row">
 
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <label class="form-label">Expense date</label>
+                            <label class="form-label">Expense Start date</label>
                             <input type="date" name="date"  class="form-control" placeholder="Date" value="{{$date?$date:''}}">
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">Expense End date</label>
+                            <input type="date" name="end_date"  class="form-control" placeholder="Date" value="{{$end_date?$end_date:''}}">
                         </div>
                     </div>
                     @php
                         $projects = App\Customer::latest()->get();
                     @endphp
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label>Project</label>
                             <select class="form-control select2" name="project">
@@ -31,7 +37,7 @@
                     @php
                         $category = App\ExpenseCategory::latest()->get();
                     @endphp
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="form-group">
                             <label>Expense category</label>
                             <select class="form-control select2" name="category">
@@ -66,6 +72,8 @@
                                             <tr role="row">
                                                 <th class="border-bottom-0">Sl.
                                                 </th>
+                                                <th class="border-bottom-0">Date
+                                                </th>
                                                 <th class="border-bottom-0">Project
                                                 </th>
                                                 <th class="border-bottom-0">Category
@@ -85,6 +93,8 @@
                                                         <td class="text-nowrap align-middle">
                                                             <span>{{ $key+1 }}</span></td>
                                                         <td class="text-nowrap align-middle">
+                                                            <span>{{ $row->date }}</span></td>
+                                                        <td class="text-nowrap align-middle">
                                                             <span>{{ $row->project_name }}</span></td>
                                                         <td class="text-nowrap align-middle">
                                                             <span>{{ $row->expense_category }}</span></td>
@@ -101,7 +111,7 @@
                                             </tbody>
                                             <tfoot>
                                             <tr>
-                                                <th colspan="5" style="text-align:right">Total:</th>
+                                                <th colspan="6" style="text-align:right">Total:</th>
                                                 <th>{{$get_report->sum('amount')}}</th>
                                             </tr>
                                             </tfoot>
@@ -140,14 +150,14 @@
 
                     // Total over all pages
                     total = api
-                        .column( 5 )
+                        .column( 6 )
                         .data()
                         .reduce( function (a, b) {
                             return intVal(a) + intVal(b);
                         }, 0 );
 
                     // Update footer
-                    $( api.column( 5 ).footer() ).html(
+                    $( api.column( 6 ).footer() ).html(
                        'BDT '+ total
                     );
                 }

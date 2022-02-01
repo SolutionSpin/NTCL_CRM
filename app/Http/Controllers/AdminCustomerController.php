@@ -87,12 +87,9 @@ class AdminCustomerController extends Controller
         $customer = Customer::find($id);
         $estimate = Estimate::where('customer_id', $id)->first();
         $invoice = Invoice::where('customer_id', $id)->first();
-        $order = Order::where('customer_id', $id)->first();
-        if (!empty($estimate) || (!empty($invoice)) || (!empty($order))) {
-            return redirect()->back()->with('error', 'Customer Deletion Restricted.');
-        }
+
         $customer->delete();
-        return redirect()->back()->with('message', 'Customer Destroyed Successfully');
+        return redirect()->back()->with('message', 'Customer Deleted Successfully');
     }
 
     /* update customer details */

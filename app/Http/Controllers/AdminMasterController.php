@@ -161,9 +161,9 @@ class AdminMasterController extends Controller
         $expenseCategory = ExpenseCategory::find($id);
         $expense = Expense::where('expense_category_id',$id)->first();
         /* if expence categoroy is restricted */
-        if(!empty($expense)) {
-            return redirect()->back()->with('error', 'Expense Category Deletion Restricted.');
-        }
+//        if(!empty($expense)) {
+//            return redirect()->back()->with('error', 'Expense Category Deletion Restricted.');
+//        }
         $expenseCategory->delete();
         return redirect()->back()->with('message', 'Expense Category Destroyed Successfully');
     }
@@ -223,11 +223,11 @@ class AdminMasterController extends Controller
         $expenseCategory = ExpenseSubCategory::find($id);
         $expense = Expense::where('expense_category_id',$id)->first();
         /* if expence categoroy is restricted */
-        if(!empty($expense)) {
-            return redirect()->back()->with('error', 'Expense Category Deletion Restricted.');
-        }
+//        if(!empty($expense)) {
+//            return redirect()->back()->with('error', 'Expense Category Deletion Restricted.');
+//        }
         $expenseCategory->delete();
-        return redirect()->back()->with('message', 'Expense Category Destroyed Successfully');
+        return redirect()->back()->with('message', 'Expense Sub Category Destroyed Successfully');
     }
     /* update Expense Category details */
     public function updateExpenseSubCategory(Request $request, $id)

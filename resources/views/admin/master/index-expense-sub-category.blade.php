@@ -47,9 +47,9 @@
                                                                    class="editExpenseCategory btn btn btn-sm admin-submit-btn-grad text-white"
                                                                    type="button"><i class="fas fa-edit"></i></a>
 
-                                                                <!--a href="{{ url('admin/masters/expense-category/delete/' . $row->id) }}"
+                                                                <a href="{{ url('admin/masters/expense-sub-category/delete/' . $row->id) }}"
                                                                    class="delete-btn btn btn-sm btn-danger  admin-delete-rigt"
-                                                                   type="button"><i class="fas fa-trash"></i></a-->
+                                                                   type="button"><i class="fas fa-trash"></i></a>
                                                             </div>
                                                         </td>
                                                     </tr>

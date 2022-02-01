@@ -72,6 +72,7 @@ class AdminReportController extends Controller
     public function ExpenseReportIndex()
     {
         $date = date('Y-m-d');
+        $end_date = date('Y-m-d');
         $project_id = '';
         $category_id = '';
             $get_report = Expense::select("expenses.*", "expense_categories.name as expense_category", "expense_sub_categories.name as expense_sub_category",
@@ -84,7 +85,7 @@ class AdminReportController extends Controller
             //   return $get_report;
 
 
-        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date'));
+        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date', 'end_date'));
 
         }
     public function ExpenseReportFilter(Request $request)
@@ -100,6 +101,11 @@ class AdminReportController extends Controller
         {
             $date = $request->date;
         }
+        $end_date = date('Y-m-d');
+        if(isset($request->end_date))
+        {
+            $end_date = $request->end_date;
+        }
         $category_id = '';
         if(isset($request->category))
         {
@@ -110,7 +116,8 @@ class AdminReportController extends Controller
             ->join("customers", "customers.id", "=", "expenses.customer_id")
             ->join("expense_categories", "expense_categories.id", "=", "expenses.expense_category_id")
             ->join("expense_sub_categories", "expense_sub_categories.id", "=", "expenses.expense_subcategory")
-            ->where("date", $date)
+            ->whereDate('date', '>=', $date)
+            ->whereDate('date', '<=', $end_date)
             ->when($project_id, function ($query) use ($project_id) {
                 return $query->where('expenses.customer_id',$project_id);
             })
@@ -122,7 +129,7 @@ class AdminReportController extends Controller
         //   return $get_report;
 
 
-        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date'));
+        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date', 'end_date'));
 
     }
 }
