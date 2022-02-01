@@ -24,6 +24,7 @@
                                                     <th>Project</th>
                                                     <th>{{ __('all.expense_category') }}</th>
                                                     <th>Expense Subcategory</th>
+                                                    <th>Voucher No</th>
                                                     <th>{{ __('all.amount') }}</th>
                                                     <th>{{ __('all.options') }}</th>
                                                 </tr>
@@ -47,6 +48,7 @@
                                                         <td class="text-nowrap align-middle"><span
                                                                 >{{ $row->expense_subcategory ? $row->expense_subcategory  : ''}}</span>
                                                         </td>
+                                                        <td class="text-nowrap align-middle">{{ $row->voucher }}</td>
                                                         <td class="text-nowrap align-middle">{{ $row->amount }}</td>
                                                         <td>
                                                             <div class="btn-group">

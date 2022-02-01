@@ -82,6 +82,13 @@
                                     </div>
                                     <div class="col-sm-3 col-md-3">
                                         <div class="form-group">
+                                            <label class="form-label">Voucher No:</label>
+                                            <input type="text" class="form-control" placeholder="voucher" name="voucher"
+                                                   id="voucher" value="{{ isset($expense->voucher) ? $expense->voucher : '' }}">
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-3 col-md-3">
+                                        <div class="form-group">
                                             <label class="form-label">{{ __('all.amount') }}:<span
                                                     class="text-red">*</span></label>
                                             <input type="text" class="form-control" placeholder="Amount" name="amount"
@@ -89,11 +96,11 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-9 col-md-9">
+
+                                    <div class="col-sm-6 col-md-6">
                                         <div class="form-group">
-                                            <label class="form-label">{{ __('all.notes') }}:<span
-                                                    class="text-red">*</span></label>
-                                            <textarea class="form-control mb-4" placeholder="Notes" rows="6" name="note"
+                                            <label class="form-label">{{ __('all.notes') }}:</label>
+                                            <textarea class="form-control mb-4" placeholder="Notes" rows="3" name="note"
                                                 id="note">{{ isset($expense) ? $expense->note : '' }}</textarea>
                                         </div>
                                     </div>

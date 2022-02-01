@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 use App\Expense;
+use App\Invoice;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 class AdminExpenseController extends Controller
 {
@@ -32,6 +34,7 @@ class AdminExpenseController extends Controller
             $expense->amount = $request->amount;
             $expense->expense_subcategory = $request->expense_subcategory;
             $expense->note = $request->note;
+            $expense->voucher = $request->voucher;
             $expense->save();
             return redirect('/admin/expenses')->with('message', 'Expense created Successfully.');
         }
@@ -58,8 +61,11 @@ class AdminExpenseController extends Controller
             $expense->amount = $request->amount;
             $expense->expense_subcategory = $request->expense_subcategory;
             $expense->note = $request->note;
+            $expense->voucher = $request->voucher;
             $expense->save();
             return redirect('/admin/expenses')->with('message', 'Expense Updated Successfully');
         }
     }
+
+
 }

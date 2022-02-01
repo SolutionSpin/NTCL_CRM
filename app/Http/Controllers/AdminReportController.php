@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Expense;
 use App\Invoice;
 use App\Customer;
 use Carbon\Carbon;
@@ -66,5 +67,62 @@ class AdminReportController extends Controller
             /* if the request is not a ajax request */
             return view('admin.reports.customer-report', compact('customer', 'options'));
         }
+    }
+
+    public function ExpenseReportIndex()
+    {
+        $date = date('Y-m-d');
+        $project_id = '';
+        $category_id = '';
+            $get_report = Expense::select("expenses.*", "expense_categories.name as expense_category", "expense_sub_categories.name as expense_sub_category",
+                "customers.display_name as project_name")
+                ->join("customers", "customers.id", "=", "expenses.customer_id")
+                ->join("expense_categories", "expense_categories.id", "=", "expenses.expense_category_id")
+                ->join("expense_sub_categories", "expense_sub_categories.id", "=", "expenses.expense_subcategory")
+                ->where("date", date('Y-m-d'))
+                ->get();
+            //   return $get_report;
+
+
+        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date'));
+
+        }
+    public function ExpenseReportFilter(Request $request)
+    {
+
+        $project_id='';
+        if(isset($request->project))
+        {
+            $project_id = $request->project;
+        }
+        $date = date('Y-m-d');
+        if(isset($request->date))
+        {
+            $date = $request->date;
+        }
+        $category_id = '';
+        if(isset($request->category))
+        {
+            $category_id = $request->category;
+        }
+        $get_report = Expense::select("expenses.*", "expense_categories.name as expense_category", "expense_sub_categories.name as expense_sub_category",
+            "customers.display_name as project_name")
+            ->join("customers", "customers.id", "=", "expenses.customer_id")
+            ->join("expense_categories", "expense_categories.id", "=", "expenses.expense_category_id")
+            ->join("expense_sub_categories", "expense_sub_categories.id", "=", "expenses.expense_subcategory")
+            ->where("date", $date)
+            ->when($project_id, function ($query) use ($project_id) {
+                return $query->where('expenses.customer_id',$project_id);
+            })
+            ->when($category_id, function ($query) use ($category_id) {
+                return $query->where('expenses.expense_category_id',$category_id);
+            })
+
+            ->get();
+        //   return $get_report;
+
+
+        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date'));
+
     }
 }

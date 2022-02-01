@@ -208,6 +208,8 @@ Route::group(['prefix' => 'admin','middleware' => 'admin'], function () {
     /* Report management */
     Route::group(['prefix' => 'reports'], function () {
         Route::match(['get', 'post'],'/invoice', [AdminReportController::class, 'invoiceReportIndex']);
+        Route::match('get','/expense', [AdminReportController::class, 'ExpenseReportIndex'])->name('expense-report');;
+        Route::match('post','/expense', [AdminReportController::class, 'ExpenseReportFilter']);
         Route::match(['get', 'post'],'/customers', [AdminReportController::class, 'customerReportIndex']);
     });
 

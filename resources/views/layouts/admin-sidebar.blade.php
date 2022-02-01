@@ -25,32 +25,24 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/customers')}}" class="nav-link  {{ Request::is('admin/customers*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-users"></i>
-                        <p>
-                            Projects
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{url('admin/expenses')}}" class="nav-link  {{ Request::is('admin/expenses*') ? 'active-admin' : null }}">
-                        <i class="nav-icon fas fa-wallet"></i>
-                        <p>
-                            {{__('all.expense')}}
-                        </p>
-                    </a>
-                </li>
+
                 <li class="nav-item {{ Request::is('admin/masters/tax*') || Request::is('admin/masters/payment-mode*') || Request::is('admin/masters/expense-category*')  ? 'menu-open' : null }}">
                     <a href="#" class="nav-link {{ Request::is('admin/masters/tax*') || Request::is('admin/masters/payment-mode*') || Request::is('admin/masters/expense-category*')  ? 'active-admin-1 admin-text-white' : null }}">
                         <i class="nav-icon fas fa-arrow-alt-circle-right"></i>
-                        <p>
-                            Others
+                        <p>Master Data
                             <i class="fas fa-angle-left right"></i>
                             <span class="badge admin-white right">3</span>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{url('admin/customers')}}" class="nav-link  {{ Request::is('admin/customers*') ? 'active-admin' : null }}">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p>
+                                    Projects
+                                </p>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a href="{{url('admin/masters/expense-category')}}" class="nav-link  {{ Request::is('admin/masters/expense-category*') ? 'active-admin' : null }}">
                                 <i class="far fa-circle nav-icon"></i>
@@ -65,47 +57,21 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item {{ Request::is('admin/masters/account*') || Request::is('admin/masters/company*') || Request::is('admin/masters/email*') || Request::is('admin/masters/preference*') || Request::is('admin/masters/payment*') ? 'menu-open ' : null }}">
-                    <a href="#" class="nav-link {{ Request::is('admin/masters/account*') || Request::is('admin/masters/company*') || Request::is('admin/masters/email*') || Request::is('admin/masters/preference*') || Request::is('admin/masters/payment*')  ? 'active-admin-1 admin-text-white' : null }}">
-                        <i class="nav-icon fas fa-cog"></i>
+                <li class="nav-item">
+                    <a href="{{route('expense-report')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-signal"></i>
                         <p>
-                            {{__('all.settings')}}
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge admin-white right">5</span>
+                            Expense Report
                         </p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="{{url('admin/masters/account')}}" class="nav-link  {{ Request::is('admin/masters/account*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.account_settings')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/masters/company')}}" class="nav-link  {{ Request::is('admin/masters/company*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.company_settings')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/masters/preference')}}" class="nav-link  {{ Request::is('admin/masters/preference*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.preference_settings')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/masters/email')}}" class="nav-link  {{ Request::is('admin/masters/email*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.email_settings')}}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('admin/masters/payment')}}" class="nav-link  {{ Request::is('admin/masters/payment*') ? 'active-admin' : null }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>{{__('all.payment_settings')}}</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="{{url('admin/expenses')}}" class="nav-link  {{ Request::is('admin/expenses*') ? 'active-admin' : null }}">
+                        <i class="nav-icon fas fa-wallet"></i>
+                        <p>
+                            {{__('all.expense')}}
+                        </p>
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="{{route('admin-logout')}}" class="nav-link ">
