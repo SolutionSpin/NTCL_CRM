@@ -16,20 +16,33 @@
                     <span class="info-box-icon admin-widget-black"><i class="fas fa-receipt"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">{{__('all.today_invoice')}}</span>
+                        <span class="info-box-text">Todays Expense</span>
                         <span
-                            class="info-box-number"> {{$currency}} {{App\Invoice::where('invoice_date',\Carbon\Carbon::today())->sum('total')}}</span>
+                            class="info-box-number"> {{$currency}} {{App\Expense::where('date',\Carbon\Carbon::today())->sum('amount')}}</span>
                     </div>
                 </div>
             </div>
+
             <div class="col-md-3 col-sm-6 col-12">
                 <div class="info-box shadow-3">
                     <span class="info-box-icon admin-widget-black"><i class="fas fa-receipt"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">{{__('all.this_month_total_invoice')}}</span>
+                        <span class="info-box-text">Yesterdays Expense</span>
                         <span
-                            class="info-box-number"> {{$currency}} {{App\Invoice::whereBetween('invoice_date',[\Carbon\Carbon::now()->startOfMonth(),\Carbon\Carbon::now()->endOfMonth()])->sum('total')}}</span>
+                            class="info-box-number"> {{$currency}} {{App\Expense::where('date',\Carbon\Carbon::yesterday())->sum('amount')}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-12">
+                <div class="info-box shadow-3">
+                    <span class="info-box-icon admin-widget-black"><i class="fas fa-receipt"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Expense This month</span>
+                        <span
+                            class="info-box-number"> {{$currency}} {{App\Expense::whereBetween('date',[\Carbon\Carbon::now()->startOfMonth(),\Carbon\Carbon::now()->endOfMonth()])->sum('amount')}}</span>
                     </div>
                 </div>
             </div>
@@ -38,20 +51,9 @@
                     <span class="info-box-icon admin-widget-black"><i class="fas fa-wallet"></i></span>
 
                     <div class="info-box-content">
-                        <span class="info-box-text">{{__('all.today_payment')}}</span>
+                        <span class="info-box-text">Total Projects</span>
                         <span
-                            class="info-box-number">{{$currency}}{{App\Invoice::where('invoice_date',\Carbon\Carbon::today())->sum('paid')}}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box shadow-3">
-                    <span class="info-box-icon admin-widget-black"><i class="fas fa-wallet"></i></span>
-
-                    <div class="info-box-content">
-                        <span class="info-box-text">{{__('all.this_month_total_payment')}}</span>
-                        <span
-                            class="info-box-number">{{$currency}}  {{App\Invoice::whereBetween('invoice_date',[\Carbon\Carbon::now()->startOfMonth(),\Carbon\Carbon::now()->endOfMonth()])->sum('paid')}}</span>
+                            class="info-box-number">{{App\Customer::count()}}</span>
                     </div>
                 </div>
             </div>
