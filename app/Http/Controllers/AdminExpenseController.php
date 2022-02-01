@@ -10,8 +10,9 @@ class AdminExpenseController extends Controller
     public function expensesIndex(Request $request)
     {
         /* if the url has get method */
-        $expenses = Expense::select("expenses.*", "expense_categories.name as expense_category", "customers.display_name as customer_name")->
-        join("expense_categories", "expense_categories.id","=","expenses.expense_category_id")->
+        $expenses = Expense::select("expenses.*", "expense_categories.name as expense_category", "expense_sub_categories.name as expense_sub_category", "customers.display_name as customer_name")
+            ->join("expense_categories", "expense_categories.id","=","expenses.expense_category_id")
+            -> join("expense_sub_categories", "expense_sub_categories.id","=","expenses.expense_subcategory")->
             join("customers", "customers.id","=","expenses.customer_id")
             ->orderby("id", "desc")
             ->paginate(15);

@@ -46,7 +46,7 @@
                                                             <span class="font-weight-bold">{{ $row->expense_category ? $row->expense_category  : '' }}</span>
                                                         </td>
                                                         <td class="text-nowrap align-middle"><span
-                                                                >{{ $row->expense_subcategory ? $row->expense_subcategory  : ''}}</span>
+                                                                >{{ $row->expense_sub_category ? $row->expense_sub_category  : ''}}</span>
                                                         </td>
                                                         <td class="text-nowrap align-middle">{{ $row->voucher }}</td>
                                                         <td class="text-nowrap align-middle">{{ $row->amount }}</td>
