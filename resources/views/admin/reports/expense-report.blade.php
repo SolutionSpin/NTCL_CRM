@@ -59,22 +59,22 @@
                                 <div class="card-header admin-cart-header">
                                     <h3 class="card-title">Reports</h3>
                                 </div>
-                                <div class="card-body">
+                                <div class="card-body table-responsive">
                                         <table class="table table-bordered"
                                                id="expense_report" >
                                             <thead>
                                             <tr role="row">
-                                                <th class="border-bottom-0 w-20 sorting">Sl.
+                                                <th class="border-bottom-0">Sl.
                                                 </th>
-                                                <th class="border-bottom-0 w-20 sorting">Project
+                                                <th class="border-bottom-0">Project
                                                 </th>
-                                                <th class="border-bottom-0 w-20 sorting">Category
+                                                <th class="border-bottom-0">Category
                                                 </th>
-                                                <th class="border-bottom-0 w-30 sorting">Sub Category
+                                                <th class="border-bottom-0">Sub Category
                                                 </th>
-                                                <th class="border-bottom-0 w-30 sorting">Voucher No
+                                                <th class="border-bottom-0">Voucher No
                                                 </th>
-                                                <th class="border-bottom-0 w-10 sorting">Amount
+                                                <th class="border-bottom-0">Amount (BDT)
                                                 </th>
                                             </tr>
                                             </thead>
@@ -122,6 +122,7 @@
         $(document).ready(function() {
             $('#expense_report').DataTable( {
                 dom: 'Bfrti',
+                responsive: true,
                 "autoWidth": false,
                 buttons: [
                     'csv', 'excel', 'print'
@@ -147,7 +148,7 @@
 
                     // Update footer
                     $( api.column( 5 ).footer() ).html(
-                        total
+                       'BDT '+ total
                     );
                 }
             } );
