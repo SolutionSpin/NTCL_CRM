@@ -58,14 +58,6 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('expense-report')}}" class="nav-link ">
-                        <i class="nav-icon fas fa-signal"></i>
-                        <p>
-                            Expense Report
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
                     <a href="{{url('admin/expenses')}}" class="nav-link  {{ Request::is('admin/expenses*') ? 'active-admin' : null }}">
                         <i class="nav-icon fas fa-wallet"></i>
                         <p>
@@ -73,6 +65,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{route('expense-report')}}" class="nav-link ">
+                        <i class="nav-icon fas fa-signal"></i>
+                        <p>
+                            Expense Report
+                        </p>
+                    </a>
+                </li>
+
                 <li class="nav-item">
                     <a href="{{route('admin-logout')}}" class="nav-link ">
                         <i class="nav-icon fas fa-sign-out-alt"></i>
