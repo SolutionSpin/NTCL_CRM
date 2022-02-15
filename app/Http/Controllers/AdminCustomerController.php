@@ -23,15 +23,7 @@ class AdminCustomerController extends Controller
             /* if the url has get method */
             return view('admin.customers.create');
         } else {
-            /* if the url has post method */
-            $rules = [
-                'billing_address1' => 'required',
-            ];
-            $validator = Validator::make($request->all(), $rules);
-            if ($validator->fails()) {
-                /* if the validation fails */
-                return redirect('admin/customers/create')->with('error', 'Address field required.');
-            }
+
             $customer = new Customer();
             $customer->display_name = $request->display_name;
             $customer->contact_name = $request->contact_name;
@@ -59,14 +51,14 @@ class AdminCustomerController extends Controller
 
             $customer->phone = $request->phone;
             $customer->currency = $request->currency;
-            $customer->billing_address1 = $request->billing_address1;
-            $customer->billing_address2 = $request->billing_address2;
-            $customer->billing_address_city = $request->billing_address_city;
-            $customer->billing_address_state = $request->billing_address_state;
-            $customer->billing_address_zip = $request->billing_address_zip;
-            $customer->billing_address_phone = $request->billing_address_phone;
-            $customer->billing_address_name = $request->billing_address_name;
-            $customer->billing_address_country = $request->billing_address_country;
+//            $customer->billing_address1 = $request->billing_address1;
+//            $customer->billing_address2 = $request->billing_address2;
+//            $customer->billing_address_city = $request->billing_address_city;
+//            $customer->billing_address_state = $request->billing_address_state;
+//            $customer->billing_address_zip = $request->billing_address_zip;
+//            $customer->billing_address_phone = $request->billing_address_phone;
+//            $customer->billing_address_name = $request->billing_address_name;
+//            $customer->billing_address_country = $request->billing_address_country;
      /*       $customer->shipping_address1 = ($request->shipping_address1 == "") ? $request->billing_address1 : $request->shipping_address1;
             $customer->shipping_address2 = ($request->shipping_address2 == "") ? $request->billing_address2 : $request->shipping_address2;
             $customer->shipping_address_city = ($request->shipping_address_city == "") ? $request->billing_address_city : $request->shipping_address_city;
@@ -101,14 +93,8 @@ class AdminCustomerController extends Controller
             return view('admin.customers.create', compact('customer'));
         } else {
             /* if the url has post method */
-            $rules = [
-                'billing_address1' => 'required',
-            ];
-            $validator = Validator::make($request->all(), $rules);
-            if ($validator->fails()) {
-                /* if the validation fails */
-                return redirect('admin/customers/create')->with('error', 'Address field required.');
-            }
+
+
             $customer->display_name = $request->display_name;
             $customer->email = $request->email;
             $customer->contact_name = $request->contact_name;
@@ -135,23 +121,23 @@ class AdminCustomerController extends Controller
 
 
             $customer->currency = $request->currency;
-            $customer->billing_address1 = $request->billing_address1;
-            $customer->billing_address2 = $request->billing_address2;
-            $customer->billing_address_city = $request->billing_address_city;
-            $customer->billing_address_state = $request->billing_address_state;
-            $customer->billing_address_zip = $request->billing_address_zip;
-            $customer->billing_address_phone = $request->billing_address_phone;
-            $customer->billing_address_name = $request->billing_address_name;
-            $customer->billing_address_country = $request->billing_address_country;
-            $customer->shipping_address1 = ($request->shipping_address1 == "") ? $request->billing_address1 : $request->shipping_address1;
-            $customer->shipping_address2 = ($request->shipping_address2 == "") ? $request->billing_address2 : $request->shipping_address2;
-            $customer->shipping_address_city = ($request->shipping_address_city == "") ? $request->billing_address_city : $request->shipping_address_city;
-            $customer->shipping_address_state = ($request->shipping_address_state == "") ? $request->billing_address_state : $request->shipping_address_state;
-            $customer->shipping_address_name = ($request->shipping_address_name == "") ? $request->billing_address_name : $request->shipping_address_name;
-            $customer->shipping_address_country = ($request->shipping_address_country == "") ? $request->billing_address_country : $request->shipping_address_country;
-            $customer->shipping_address_zip = ($request->shipping_address_zip == "") ? $request->billing_address_zip : $request->shipping_address_zip;
-            $customer->shipping_address_phone = ($request->shipping_address_phone == "") ? $request->billing_address_phone : $request->shipping_address_phone;
-            $customer->save();
+//            $customer->billing_address1 = $request->billing_address1;
+//            $customer->billing_address2 = $request->billing_address2;
+//            $customer->billing_address_city = $request->billing_address_city;
+//            $customer->billing_address_state = $request->billing_address_state;
+//            $customer->billing_address_zip = $request->billing_address_zip;
+//            $customer->billing_address_phone = $request->billing_address_phone;
+//            $customer->billing_address_name = $request->billing_address_name;
+//            $customer->billing_address_country = $request->billing_address_country;
+//            $customer->shipping_address1 = ($request->shipping_address1 == "") ? $request->billing_address1 : $request->shipping_address1;
+//            $customer->shipping_address2 = ($request->shipping_address2 == "") ? $request->billing_address2 : $request->shipping_address2;
+//            $customer->shipping_address_city = ($request->shipping_address_city == "") ? $request->billing_address_city : $request->shipping_address_city;
+//            $customer->shipping_address_state = ($request->shipping_address_state == "") ? $request->billing_address_state : $request->shipping_address_state;
+//            $customer->shipping_address_name = ($request->shipping_address_name == "") ? $request->billing_address_name : $request->shipping_address_name;
+//            $customer->shipping_address_country = ($request->shipping_address_country == "") ? $request->billing_address_country : $request->shipping_address_country;
+//            $customer->shipping_address_zip = ($request->shipping_address_zip == "") ? $request->billing_address_zip : $request->shipping_address_zip;
+//            $customer->shipping_address_phone = ($request->shipping_address_phone == "") ? $request->billing_address_phone : $request->shipping_address_phone;
+//            $customer->save();
             return redirect('/admin/customers')->with('message', 'Customer Updated Successfully.');
         }
     }

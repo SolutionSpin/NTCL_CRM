@@ -30,7 +30,7 @@
                                 <div class="row">
                                     <div class="col-sm-6 col-md-4">
                                         <div class="form-group">
-                                            <label class="form-label">{{ __('all.display_name') }}:<span
+                                            <label class="form-label">Project Name<span
                                                     class="text-red">*</span></label>
                                             <input type="text" class="form-control mb-4" placeholder="Name"
                                                 id="display_name" name="display_name"
@@ -51,7 +51,6 @@
                                             <input type="text" class="form-control mb-4 check-email" id="email"
                                                 name="email"
                                                 value="{{ isset($customer) ? $customer->email : '' }}">
-                                                <b><span id="email_status" class="text-danger"></span></b>
                                         </div>
                                     </div>
                                     @if(isset($user))
@@ -108,97 +107,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xl-12 col-lg-12 col-md-12">
-                        <div class="card card-outline shadow-3">
-                            <div class="card-header admin-cart-header">
-                                <h3 class="card-title">{{ __('all.billing_address') }}</h3>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.name') }}:<span
-                                                    class="text-red">*</span></label>
-                                            <input type="text" class="form-control mb-4" placeholder="Name"
-                                                id="billing_address_name" name="billing_address_name"
-                                                value="{{ isset($customer) ? $customer->billing_address_name : '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.phone_number') }}<span
-                                                    class="text-red">*</span></label>
-                                            <input type="text" class="form-control mb-4" id="billing_address_phone"
-                                                name="billing_address_phone"
-                                                value="{{ isset($customer) ? $customer->billing_address_phone : '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.country') }}</label>
-                                            @php
-                                                $countries = App\Country::get();
-                                            @endphp
-                                            <select class="form-control select2"
-                                                data-placeholder="Choose one (with searchbox)"
-                                                name="billing_address_country" id="billing_address_country">
-                                                @foreach ($countries as $row)
-                                                    <option value="">--{{ __('all.choose_country') }}--</option>
-                                                    <option value="{{ $row->country_code }}"
-                                                        {{ isset($customer) && $customer->billing_address_country == $row->country_code ? 'selected' : '' }}>
-                                                        {{ $row->country_code }}
-                                                        ({{ $row->country_name }})
-                                                    </option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.state') }}:<span
-                                                    class="text-red">*</span></label>
-                                            <input type="text" class="form-control mb-4" id="billing_address_state"
-                                                name="billing_address_state"
-                                                value="{{ isset($customer) ? $customer->billing_address_state : '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.city') }}:<span
-                                                    class="text-red">*</span></label>
-                                            <input type="text" class="form-control mb-4" id="billing_address_city"
-                                                name="billing_address_city"
-                                                value="{{ isset($customer) ? $customer->billing_address_city : '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-4 col-md-4">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.zip_code') }}:<span
-                                                    class="text-red">*</span></label>
-                                            <input type="text" class="form-control mb-4" id="billing_address_zip"
-                                                name="billing_address_zip"
-                                                value="{{ isset($customer) ? $customer->billing_address_zip : '' }}">
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.address_1') }}:<span
-                                                    class="text-red">*</span></label>
-                                            <textarea type="text" class="form-control mb-4" id="billing_address1"
-                                                name="billing_address1">{{ isset($customer) ? $customer->billing_address1 : '' }}</textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-6">
-                                        <div class="form-group">
-                                            <label class="form-label">{{ __('all.address_2') }}: </label>
-                                            <textarea type="text" class="form-control mb-4" id="billing_address2"
-                                                name="billing_address2">{{ isset($customer) ? $customer->billing_address2 : '' }}</textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                     <div class="col-sm-12 col-md-12">
                         <div class="form-footer mt-2">
                             <button class="btn admin-submit-btn-grad next_btn" type="submit">{{ __('all.save') }}</button>
@@ -212,45 +120,4 @@
 @endsection
 @push('js')
 
-<script>
-
-   /* check email uniqueness */
-   $(document).on("keyup", ".check-email", function () {
-  'use strict';
-
-          var email=$("#email" ).val();
-          var flag=$('#flag').val();
-          var id=$('#id').val();
-          if(email)
-          {
-              $.ajax({
-                  type: 'post',
-                  url: '{{ url('/admin/checkEmail') }}',
-                  data: {
-                      user_email:email,
-                      flag:flag,
-                      id:id,
-                      "_token": "{{ csrf_token() }}",
-                  },
-                  dataType: 'json',
-                  success: function (response) {
-                      if(response=="OK")
-                      {
-                          $('#email_status').html("");
-                          $('.next_btn').prop('disabled',false);
-                          return true;
-                      }
-                      else
-                      {
-                          $( '#email_status' ).html(response);
-                          $('#email').focus();
-                          $('.next_btn').prop('disabled',true);
-                          return false;
-                      }
-                  }
-              });
-          }
-
-      });
-</script>
 @endpush
