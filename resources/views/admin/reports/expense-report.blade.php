@@ -117,7 +117,7 @@
                                                         <td class="text-nowrap align-middle">
                                                             <span>{{ $row->voucher }}</span></td>
                                                         <td class="text-nowrap align-middle">
-                                                           {{ $row->amount }}</td>
+                                                           {{ number_format($row->amount) }}</td>
 
                                                     </tr>
                                                 @endforeach
