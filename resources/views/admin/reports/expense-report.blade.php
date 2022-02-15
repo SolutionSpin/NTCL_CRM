@@ -6,15 +6,15 @@
             <div class="card-body pb-0 shadow-3">
                 <form method="post" action="/admin/reports/expense">
                     <input type="hidden" name="_token" id="csrf-token" value="{{ Session::token() }}" />
-                <div class="row">
+                <div class="row row-cols-5">
 
-                    <div class="col-md-3">
+                    <div class="col">
                         <div class="form-group">
                             <label class="form-label">Expense Start date</label>
                             <input type="date" name="date"  class="form-control" placeholder="Date" value="{{$date?$date:''}}">
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col">
                         <div class="form-group">
                             <label class="form-label">Expense End date</label>
                             <input type="date" name="end_date"  class="form-control" placeholder="Date" value="{{$end_date?$end_date:''}}">
@@ -23,7 +23,7 @@
                     @php
                         $projects = App\Customer::latest()->get();
                     @endphp
-                    <div class="col-md-3">
+                    <div class="col">
                         <div class="form-group">
                             <label>Project</label>
                             <select class="form-control select2" name="project">
@@ -37,13 +37,27 @@
                     @php
                         $category = App\ExpenseCategory::latest()->get();
                     @endphp
-                    <div class="col-md-3">
+                    <div class="col">
                         <div class="form-group">
                             <label>Expense category</label>
                             <select class="form-control select2" name="category">
                                 <option value="">--All Expense category--</option>
                                 @foreach ($category as $categories)
                                     <option {{$category_id== $categories->id?'selected':''}} value="{{$categories->id}}">{{ $categories->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    @php
+                        $subcategory = App\ExpenseSubCategory::latest()->get();
+                    @endphp
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Expense Sub category</label>
+                            <select class="form-control select2" name="subcategory">
+                                <option value="">--All Expense Subcategory--</option>
+                                @foreach ($subcategory as $subcategories)
+                                    <option {{$subcategory_id == $subcategories->id?'selected':''}} value="{{$subcategories->id}}">{{ $subcategories->name }}</option>
                                 @endforeach
                             </select>
                         </div>

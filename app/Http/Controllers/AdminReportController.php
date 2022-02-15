@@ -75,6 +75,7 @@ class AdminReportController extends Controller
         $end_date = date('Y-m-d');
         $project_id = '';
         $category_id = '';
+        $subcategory_id = '';
             $get_report = Expense::select("expenses.*", "expense_categories.name as expense_category", "expense_sub_categories.name as expense_sub_category",
                 "customers.display_name as project_name")
                 ->join("customers", "customers.id", "=", "expenses.customer_id")
@@ -85,7 +86,7 @@ class AdminReportController extends Controller
             //   return $get_report;
 
 
-        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date', 'end_date'));
+        return view("admin.reports.expense-report", compact('get_report','project_id','category_id','subcategory_id', 'date', 'end_date'));
 
         }
     public function ExpenseReportFilter(Request $request)
@@ -111,6 +112,11 @@ class AdminReportController extends Controller
         {
             $category_id = $request->category;
         }
+        $subcategory_id = '';
+        if(isset($request->subcategory))
+        {
+            $subcategory_id = $request->subcategory;
+        }
         $get_report = Expense::select("expenses.*", "expense_categories.name as expense_category", "expense_sub_categories.name as expense_sub_category",
             "customers.display_name as project_name")
             ->join("customers", "customers.id", "=", "expenses.customer_id")
@@ -124,12 +130,15 @@ class AdminReportController extends Controller
             ->when($category_id, function ($query) use ($category_id) {
                 return $query->where('expenses.expense_category_id',$category_id);
             })
+            ->when($subcategory_id, function ($query) use ($subcategory_id) {
+                return $query->where('expenses.expense_subcategory',$subcategory_id);
+            })
 
             ->get();
         //   return $get_report;
 
 
-        return view("admin.reports.expense-report", compact('get_report','project_id','category_id', 'date', 'end_date'));
+        return view("admin.reports.expense-report", compact('get_report','project_id','category_id','subcategory_id', 'date', 'end_date'));
 
     }
 }
