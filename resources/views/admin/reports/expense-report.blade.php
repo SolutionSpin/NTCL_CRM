@@ -150,7 +150,7 @@
     <script>
         $(document).ready(function() {
             $('#expense_report').DataTable( {
-                dom: 'Bfrtip',
+                dom: 'Blfrtip',
                 responsive: true,
                 paging: true,
                 "autoWidth": false,
