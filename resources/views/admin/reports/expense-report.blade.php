@@ -154,6 +154,7 @@
                 responsive: true,
                 paging: true,
                 "autoWidth": false,
+                "lengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
                 buttons: [
                     { extend: 'excelHtml5', footer: true },
                     { extend: 'csvHtml5', footer: true },
